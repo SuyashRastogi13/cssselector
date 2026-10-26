@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Selectors & Background Image Demo</title>
+<style>
+
+    /* 1. ELEMENT SELECTOR - applies to every <body> tag: sets a page-wide background image */
+    body {
+        margin: 0;
+        background-image:
+            linear-gradient(rgba(10,15,30,0.55), rgba(10,15,30,0.55)),
+            url('https://picsum.photos/id/1015/1600/900');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        color: #222;
+    }
+
+    /* 2. ELEMENT SELECTOR - applies to every <h1> tag on the page */
+    h1 {
+        color: #0b1d51;
+        font-size: 36px;
+        text-align: center;
+        margin: 0;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #e8ecf7;
+        margin-top: 6px;
+        margin-bottom: 30px;
+        font-size: 15px;
+    }
+
+    /* 3. ELEMENT SELECTOR - applies to every <p> tag by default */
+    p {
+        font-size: 15.5px;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    .card {
+        background-color: rgba(255,255,255,0.94);
+        padding: 20px 24px;
+        border-radius: 10px;
+        margin-bottom: 22px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    .tag-label {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+        color: #ffffff;
+        background-color: #0b1d51;
+        padding: 3px 10px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+    }
+
+    /* 4. CLASS SELECTOR - only applies to elements with class="highlight" */
+    .highlight {
+        color: #8a1f1f;
+        font-weight: 600;
+    }
+
+    /* 5. ID SELECTOR - applies only to the single element with id="special-box" */
+    /* This element also gets its OWN background image, different from the page background */
+    #special-box {
+        background-image:
+            linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+            url('https://picsum.photos/id/1043/800/400');
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        margin-bottom: 22px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+
+    #special-box h2 {
+        margin-top: 0;
+    }
+
+    /* DESCENDANT SELECTOR - only <p> tags that are INSIDE #special-box */
+    #special-box p {
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    }
+
+    /* 6. COMBINED SELECTOR (element + class) - only <p> tags with class="note" */
+    p.note {
+        font-style: italic;
+        color: #333;
+        border-left: 4px solid #0b1d51;
+        padding-left: 12px;
+    }
+
+    /* 7. GROUP SELECTOR - applies the same rule to multiple selectors at once */
+    h2, .highlight, #special-box h2 {
+        font-family: Georgia, serif;
+    }
+
+    h2 {
+        color: #0b1d51;
+        margin-top: 0;
+    }
+
+    /* 8. PSEUDO-CLASS SELECTOR - only activates on mouse hover */
+    .hover-box {
+        display: inline-block;
+        background-color: #0b1d51;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .hover-box:hover {
+        background-color: #8a1f1f;
+        transform: translateY(-2px);
+    }
+
+    .content-wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 50px 24px 70px;
+    }
+
+    table.selector-guide {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+    }
+
+    table.selector-guide th, table.selector-guide td {
+        border: 1px solid #ddd;
+        padding: 8px 10px;
+        text-align: left;
+    }
+
+    table.selector-guide th {
+        background-color: #0b1d51;
+        color: #ffffff;
+    }
+
+    code {
+        background-color: rgba(11,29,81,0.08);
+        padding: 1px 5px;
+        border-radius: 3px;
+    }
+
+</style>
+</head>
+<body>
+
+    <div class="content-wrap">
+
+        <h1>CSS Selectors & Background Images</h1>
+        <p class="subtitle">Every rule below is defined once in &lt;style&gt;, then activated in the body by tag, class, or id.</p>
+
+        <div class="card">
+            <span class="tag-label">Element selector</span>
+            <p>This paragraph is styled purely by the plain <strong>element selector</strong> written for <code>p</code> — no class or id needed at all.</p>
+        </div>
+
+        <div class="card">
+            <span class="tag-label">Class selector</span>
+            <p class="highlight">This paragraph uses the <strong>class selector</strong> <code>.highlight</code>, switched on here with <code>class="highlight"</code>.</p>
+        </div>
+
+        <div id="special-box">
+            <h2>Element With Its Own Background Image</h2>
+            <p>This box is styled by the <strong>id selector</strong> <code>#special-box</code>, and it carries a completely different background image from the page itself. This paragraph is also styled by a separate <strong>descendant selector</strong>, <code>#special-box p</code>, which only affects paragraphs inside this box.</p>
+        </div>
+
+        <div class="card">
+            <span class="tag-label">Combined selector</span>
+            <p class="note">This note is styled by <code>p.note</code> — a combined selector that only matches &lt;p&gt; tags carrying the class "note".</p>
+        </div>
+
+        <div class="card">
+            <span class="tag-label">Pseudo-class selector</span>
+            <p>Hover over this button — its color change comes from <code>.hover-box:hover</code>, a rule that only activates on mouse-over.</p>
+            <br>
+            <span class="hover-box">Hover Me</span>
+        </div>
+
+        <div class="card">
+            <h2>Selector Reference</h2>
+            <table class="selector-guide">
+                <tr>
+                    <th>Selector</th>
+                    <th>Type</th>
+                    <th>Applies To</th>
+                </tr>
+                <tr>
+                    <td><code>body</code>, <code>h1</code>, <code>p</code></td>
+                    <td>Element</td>
+                    <td>Every matching tag on the page</td>
+                </tr>
+                <tr>
+                    <td><code>.highlight</code></td>
+                    <td>Class</td>
+                    <td>Any tag with <code>class="highlight"</code></td>
+                </tr>
+                <tr>
+                    <td><code>#special-box</code></td>
+                    <td>ID</td>
+                    <td>The single element with <code>id="special-box"</code></td>
+                </tr>
+                <tr>
+                    <td><code>#special-box p</code></td>
+                    <td>Descendant</td>
+                    <td>Only &lt;p&gt; tags nested inside #special-box</td>
+                </tr>
+                <tr>
+                    <td><code>p.note</code></td>
+                    <td>Combined</td>
+                    <td>&lt;p&gt; tags that also carry class "note"</td>
+                </tr>
+                <tr>
+                    <td><code>h2, .highlight, #special-box h2</code></td>
+                    <td>Group</td>
+                    <td>All three selectors at once, in one rule</td>
+                </tr>
+                <tr>
+                    <td><code>.hover-box:hover</code></td>
+                    <td>Pseudo-class</td>
+                    <td>Only while the mouse hovers over the element</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>
